@@ -1,0 +1,11 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<h1 class="text-center">{{ user.username }}</h1>
+
+	<h3 class="text-center m-3">favorite movie list</h3>
+	{% for favorite_movie in favorite_moviess %}
+		<h3>{{profile_detail.favorite_movie}}</h3>
+	{% endfor %}
+{% endblock content %}

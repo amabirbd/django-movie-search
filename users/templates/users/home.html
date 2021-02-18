@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+{% block content %}
+   <div style="color: #1a1a2e;text-align:center;font-family: Arial, Helvetica, sans-serif; padding-top: 5rem;">
+      <div class="m-2" >
+         {% if user.is_authenticated %}
+            <a class="nav-item m-3" href="{% url 'profile'  %}">Profile</a>
+            <a class="nav-item m-3" href="{% url 'logout'  %}">Log Out</a>
+
+            <!-- searchbar -->
+            <form class="m-3" action="{% url 'searchbar' %}">
+               <input name="movie_title" placeholder="movie title" type="text">
+               <button type="submit" class="btn btn-dark m-2">Search Movie</button>
+            </form>
+
+         {% else %}
+            <a class="nav-item m-3" href="{% url 'register'  %}">Sign Up</a>
+            <a class="nav-item m-3" href="{% url 'login'  %}">Log In</a>
+         {% endif %}
+
+         <!-- if searched movie found display in card -->
+         {% if movie_name %}
+            {% include 'users/movie_card.html'%}
+         {% else %}
+             
+             
+            <p>please provide a movie title</p>
+                      
+         {% endif %}
+            
+     </div>
+   </div>
+{% endblock %}
